@@ -56,6 +56,9 @@ namespace Domain.Domain.Produto.Entities
             RuleFor(x => x.Stock)
                 .GreaterThanOrEqualTo(0)
                 .WithMessage("Product stock cannot be less than 0.");
+            RuleFor(x => x.CategoryId)
+                .NotEmpty()
+                .WithMessage("Category Id must be informed.");
 
             ValidationResult = Validate(this);
 
