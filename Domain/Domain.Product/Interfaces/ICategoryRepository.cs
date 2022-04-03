@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Domain.Domain.Produto.Entities;
+using Domain.Product.Entities;
 
-namespace DefaultNamespace
+namespace Domain.Product.Interfaces
 {
     public interface ICategoryRepository
     {

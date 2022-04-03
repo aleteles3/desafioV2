@@ -2,7 +2,7 @@ using System;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Domain.Produto.Entities
+namespace Domain.Product.Entities
 {
     public abstract class Entity<T> : AbstractValidator<T>
     {

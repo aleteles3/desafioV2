@@ -1,8 +1,8 @@
-using Domain.Domain.Produto.Entities;
+using Domain.Product.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infra.Data.Produto.EntitiesConfigurations
+namespace Infra.Data.Product.EntitiesConfigurations
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {

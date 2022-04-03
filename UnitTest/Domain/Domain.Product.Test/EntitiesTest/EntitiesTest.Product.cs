@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Domain.Produto.Test.EntitiesTest
+namespace Domain.Product.Test.EntitiesTest
 {
     public partial class EntitiesTest
     {

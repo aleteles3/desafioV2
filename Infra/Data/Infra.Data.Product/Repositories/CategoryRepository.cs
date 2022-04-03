@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using DefaultNamespace;
-using Domain.Domain.Produto.Entities;
+using Domain.Product.Entities;
+using Domain.Product.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Infra.Data.Produto.Repositories
+namespace Infra.Data.Product.Repositories
 {
     public class CategoryRepository : CoreRepository, ICategoryRepository
     {

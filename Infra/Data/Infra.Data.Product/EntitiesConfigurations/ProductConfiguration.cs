@@ -1,12 +1,12 @@
-using Domain.Domain.Produto.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProductDomain = Domain.Product.Entities.Product;
 
-namespace Infra.Data.Produto.EntitiesConfigurations
+namespace Infra.Data.Product.EntitiesConfigurations
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    public class ProductConfiguration : IEntityTypeConfiguration<ProductDomain>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<ProductDomain> builder)
         {
             builder.ToTable("Pro_Product", "Product");
 

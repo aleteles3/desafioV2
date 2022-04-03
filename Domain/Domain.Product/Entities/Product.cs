@@ -1,8 +1,7 @@
 using System;
-using Domain.Produto.Entities;
 using FluentValidation;
 
-namespace Domain.Domain.Produto.Entities
+namespace Domain.Product.Entities
 {
     public sealed class Product : Entity<Product>
     {

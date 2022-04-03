@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Domain.Produto.Entities;
 using FluentValidation;
 
-namespace Domain.Domain.Produto.Entities
+namespace Domain.Product.Entities
 {
     public sealed class Category : Entity<Category>
     {
@@ -11,7 +10,7 @@ namespace Domain.Domain.Produto.Entities
         public string Name { get; private set; }
 
         //Navigation Properties
-        public IEnumerable<Product> Products { get; }
+        public IEnumerable<Domain.Product.Entities.Product> Products { get; set; }
 
         //Constructors
         public Category(string name)

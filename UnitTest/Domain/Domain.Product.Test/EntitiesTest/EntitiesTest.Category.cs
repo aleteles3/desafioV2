@@ -1,9 +1,8 @@
 using System;
 using System.Linq;
-using UnitTest.Domain.Domain.Produto.Test;
 using Xunit;
 
-namespace Domain.Produto.Test.EntitiesTest
+namespace Domain.Product.Test.EntitiesTest
 {
     public partial class EntitiesTest
     {

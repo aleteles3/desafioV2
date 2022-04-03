@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Infra.Data.Produto.Repositories
+namespace Infra.Data.Product.Repositories
 {
     public abstract class CoreRepository
     {

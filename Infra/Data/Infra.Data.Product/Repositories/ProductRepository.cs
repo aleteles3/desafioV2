@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using DefaultNamespace;
-using Domain.Domain.Produto.Entities;
+using Domain.Product.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using ProductDomain = Domain.Product.Entities.Product;
 
-namespace Infra.Data.Infra.Data.Produto.Repositories
+namespace Infra.Data.Product.Repositories
 {
     public class ProductRepository : CoreRepository, IProductRepository
     {
         public ProductRepository(DbContext productContext) : base(productContext) { }
         
-        public async Task<IEnumerable<Product>> GetProductsAsync(Expression<Func<Product, bool>> predicate, int? start, 
-            int? length, params Expression<Func<Product, object>>[] includes)
+        public async Task<IEnumerable<ProductDomain>> GetProductsAsync(Expression<Func<ProductDomain, bool>> predicate, 
+            int? start, int? length, params Expression<Func<ProductDomain, object>>[] includes)
         {
-            var query = Context.Set<Product>().Where(predicate);
+            var query = Context.Set<ProductDomain>().Where(predicate);
 
             if (includes.Any())
                 query = includes.Aggregate(query, (current, include) => current.Include(include));
@@ -27,25 +27,25 @@ namespace Infra.Data.Infra.Data.Produto.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<Product> GetProductByIdAsync(Guid id)
+        public async Task<ProductDomain> GetProductByIdAsync(Guid id)
         {
-            return await Context.Set<Product>().FirstOrDefaultAsync(x => x.Id == id);
+            return await Context.Set<ProductDomain>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Guid> AddProductAsync(Product product)
+        public async Task<Guid> AddProductAsync(ProductDomain product)
         {
             await Context.AddAsync(product);
             await SaveChangesAsync();
             return product.Id;
         }
 
-        public async Task UpdateProductAsync(Product product)
+        public async Task UpdateProductAsync(ProductDomain product)
         {
             Context.Update(product);
             await SaveChangesAsync();
         }
 
-        public async Task RemoveProductAsync(Product product)
+        public async Task RemoveProductAsync(ProductDomain product)
         {
             Context.Remove(product);
             await SaveChangesAsync();
