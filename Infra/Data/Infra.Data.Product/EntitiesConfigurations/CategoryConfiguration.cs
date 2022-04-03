@@ -25,6 +25,8 @@ namespace Infra.Data.Product.EntitiesConfigurations
             builder.HasMany(x => x.Products)
                 .WithOne(x => x.Category)
                 .HasForeignKey(x => x.CategoryId);
+
+            builder.Ignore(x => x.ValidationResult);
         }
     }
 }

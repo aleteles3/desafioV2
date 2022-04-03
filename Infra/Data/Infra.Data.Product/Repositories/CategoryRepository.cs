@@ -5,13 +5,14 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Domain.Product.Entities;
 using Domain.Product.Interfaces;
+using Infra.Data.Product.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Product.Repositories
 {
     public class CategoryRepository : CoreRepository, ICategoryRepository
     {
-        public CategoryRepository(DbContext productContext) : base(productContext) { }
+        public CategoryRepository(ProductContext productContext) : base(productContext) { }
         
         public async Task<IEnumerable<Category>> GetCategoriesAsync(Expression<Func<Category, bool>> predicate, 
             int? start, int? length, params Expression<Func<Category, object>>[] includes)

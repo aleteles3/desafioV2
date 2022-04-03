@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Domain.Product.Interfaces;
+using Infra.Data.Product.Context;
 using Microsoft.EntityFrameworkCore;
 using ProductDomain = Domain.Product.Entities.Product;
 
@@ -11,7 +12,7 @@ namespace Infra.Data.Product.Repositories
 {
     public class ProductRepository : CoreRepository, IProductRepository
     {
-        public ProductRepository(DbContext productContext) : base(productContext) { }
+        public ProductRepository(ProductContext productContext) : base(productContext) { }
         
         public async Task<IEnumerable<ProductDomain>> GetProductsAsync(Expression<Func<ProductDomain, bool>> predicate, 
             int? start, int? length, params Expression<Func<ProductDomain, object>>[] includes)

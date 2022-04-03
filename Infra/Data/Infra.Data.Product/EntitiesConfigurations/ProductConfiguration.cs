@@ -44,6 +44,8 @@ namespace Infra.Data.Product.EntitiesConfigurations
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.CategoryId)
                 .HasConstraintName("FK_Pro_Product_Cat_Category_Cat_CategoryId");
+            
+            builder.Ignore(x => x.ValidationResult);
         }
     }
 }
