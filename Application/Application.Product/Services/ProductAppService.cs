@@ -10,7 +10,7 @@ namespace Application.Product.Services;
 
 public partial class ProductAppService : AppServiceCore<IProductRepository>, IProductAppService
 {
-    protected ProductAppService(IMapper mapper, IProductRepository repository) : base(mapper, repository) { }
+    public ProductAppService(IMapper mapper, IProductRepository repository) : base(mapper, repository) { }
 
     public async Task<ProductViewModel> GetProductById(Guid id)
     {

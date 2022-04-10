@@ -1,5 +1,6 @@
 using Application.Product.AutoMapper;
 using Application.Product.Interfaces;
+using Application.Product.Services;
 using Domain.Product.Interfaces;
 using Infra.Data.Product.Context;
 using Infra.Data.Product.Repositories;
@@ -24,8 +25,8 @@ namespace Infra.IoC.Product
             //Adding Services
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IProductAppService, IProductAppService>();
-            services.AddScoped<ICategoryAppService, ICategoryAppService>();
+            services.AddScoped<IProductAppService, ProductAppService>();
+            services.AddScoped<ICategoryAppService, CategoryAppService>();
 
             return services;
         }

@@ -10,7 +10,7 @@ namespace Application.Product.Services;
 
 public partial class CategoryAppService : AppServiceCore<ICategoryRepository>, ICategoryAppService
 {
-    protected CategoryAppService(IMapper mapper, ICategoryRepository repository) : base(mapper, repository) { }
+    public CategoryAppService(IMapper mapper, ICategoryRepository repository) : base(mapper, repository) { }
     
     public async Task<CategoryViewModel> GetCategoryById(Guid id)
     {
