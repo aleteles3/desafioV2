@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Domain.Core.Interfaces;
 using Domain.Product.Entities;
 
 namespace Domain.Product.Interfaces

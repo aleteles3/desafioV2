@@ -1,4 +1,4 @@
-using System;
+using Domain.Core.Entities;
 using FluentValidation;
 
 namespace Domain.Product.Entities

@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Domain.Product\Domain.Product.csproj" />
-    <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
   </ItemGroup>
 
 </Project>

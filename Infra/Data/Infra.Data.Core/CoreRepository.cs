@@ -1,7 +1,7 @@
-using Domain.Product.Entities;
+using Domain.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Product.Repositories
+namespace Infra.Data.Core
 {
     public abstract class CoreRepository
     {

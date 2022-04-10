@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Domain.Product.Interfaces;
+using Infra.Data.Core;
 using Infra.Data.Product.Context;
 using Microsoft.EntityFrameworkCore;
 using ProductDomain = Domain.Product.Entities.Product;

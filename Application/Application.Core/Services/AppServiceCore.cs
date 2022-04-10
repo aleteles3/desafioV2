@@ -1,7 +1,7 @@
 using AutoMapper;
-using Domain.Product.Interfaces;
+using Domain.Core.Interfaces;
 
-namespace Application.Product.Services;
+namespace Application.Core.Services;
 
 public class AppServiceCore<T> where T : ICoreRepository
 {

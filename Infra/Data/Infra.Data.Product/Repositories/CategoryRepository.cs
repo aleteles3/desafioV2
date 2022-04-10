@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Domain.Product.Entities;
 using Domain.Product.Interfaces;
+using Infra.Data.Core;
 using Infra.Data.Product.Context;
 using Microsoft.EntityFrameworkCore;
 

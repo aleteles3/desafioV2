@@ -1,3 +1,4 @@
+using Application.Core.Services;
 using Application.Product.Interfaces;
 using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;

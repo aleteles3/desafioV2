@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Domain.Core.Interfaces;
 using ProductDomain = Domain.Product.Entities.Product;
 
 namespace Domain.Product.Interfaces

@@ -1,5 +1,4 @@
-using System;
-using System.Collections.Generic;
+using Domain.Core.Entities;
 using FluentValidation;
 
 namespace Domain.Product.Entities

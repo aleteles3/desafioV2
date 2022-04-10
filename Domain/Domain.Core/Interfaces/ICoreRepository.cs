@@ -1,4 +1,4 @@
-namespace Domain.Product.Interfaces;
+namespace Domain.Core.Interfaces;
 
 public interface ICoreRepository
 {
