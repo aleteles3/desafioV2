@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infra.IoC.Infra.Ioc.Product
+namespace Infra.IoC.Product
 {
     public static class DependencyInjector
     {
-        public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddServices(IServiceCollection services, IConfiguration configuration)
         {
             //Adding Database Connection
             services.AddDbContext<ProductContext>(options =>

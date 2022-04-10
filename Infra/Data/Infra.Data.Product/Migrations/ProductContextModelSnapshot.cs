@@ -29,8 +29,11 @@ namespace Infra.Data.Product.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Cat_CategoryId");
 
-                    b.Property<int>("CascadeMode")
-                        .HasColumnType("integer");
+                    b.Property<DateTimeOffset>("DateAlter")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("DateInc")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -51,12 +54,15 @@ namespace Infra.Data.Product.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Pro_ProductId");
 
-                    b.Property<int>("CascadeMode")
-                        .HasColumnType("integer");
-
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid")
                         .HasColumnName("Cat_CategoryId");
+
+                    b.Property<DateTimeOffset>("DateAlter")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("DateInc")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Data.Product.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20220403194744_InitialMigration_CreatingSchemaAndTables")]
-    partial class InitialMigration_CreatingSchemaAndTables
+    [Migration("20220410120435_Initial_Migration_CreatingSchemaAndTables")]
+    partial class Initial_Migration_CreatingSchemaAndTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,8 +31,11 @@ namespace Infra.Data.Product.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Cat_CategoryId");
 
-                    b.Property<int>("CascadeMode")
-                        .HasColumnType("integer");
+                    b.Property<DateTimeOffset>("DateAlter")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("DateInc")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -53,12 +56,15 @@ namespace Infra.Data.Product.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("Pro_ProductId");
 
-                    b.Property<int>("CascadeMode")
-                        .HasColumnType("integer");
-
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid")
                         .HasColumnName("Cat_CategoryId");
+
+                    b.Property<DateTimeOffset>("DateAlter")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTimeOffset>("DateInc")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()

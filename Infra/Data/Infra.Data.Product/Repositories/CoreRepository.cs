@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using Domain.Product.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Product.Repositories
@@ -19,7 +19,7 @@ namespace Infra.Data.Product.Repositories
             await Context.Database.BeginTransactionAsync();
         }
 
-        public virtual async Task<int> SaveChangesAsync()
+        protected virtual async Task<int> SaveChangesAsync()
         {
             return await Context.SaveChangesAsync();
         }
@@ -32,6 +32,20 @@ namespace Infra.Data.Product.Repositories
         public virtual async Task RollBackTransactionAsync()
         {
             await Context.Database.RollbackTransactionAsync();
+        }
+
+        protected async Task AddAsync<T>(Entity<T> entity)
+        {
+            entity.SetDateInc(DateTimeOffset.Now);
+            entity.SetDateAlter(DateTimeOffset.Now);
+
+            await Context.AddAsync(entity);
+        }
+
+        protected void Update<T>(Entity<T> entity)
+        {
+            entity.SetDateAlter(DateTimeOffset.Now);
+            Context.Update(entity);
         }
     }
 }

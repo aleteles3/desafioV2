@@ -1,12 +1,8 @@
-using Infra.IoC.Infra.Ioc.Product;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddServices(builder.Configuration); //Product CrossCutting
+Infra.IoC.Product.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

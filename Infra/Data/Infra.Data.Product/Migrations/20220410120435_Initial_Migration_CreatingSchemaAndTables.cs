@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infra.Data.Product.Migrations
 {
-    public partial class InitialMigration_CreatingSchemaAndTables : Migration
+    public partial class Initial_Migration_CreatingSchemaAndTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,7 +19,8 @@ namespace Infra.Data.Product.Migrations
                 {
                     Cat_CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
                     Cat_Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    CascadeMode = table.Column<int>(type: "integer", nullable: false)
+                    DateInc = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    DateAlter = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,7 +38,8 @@ namespace Infra.Data.Product.Migrations
                     Pro_Price = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
                     Pro_Stock = table.Column<int>(type: "integer", nullable: false),
                     Cat_CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CascadeMode = table.Column<int>(type: "integer", nullable: false)
+                    DateInc = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    DateAlter = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {

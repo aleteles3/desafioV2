@@ -1,12 +1,18 @@
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using FluentValidation;
-using FluentValidation.Results;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace Domain.Product.Entities
 {
     public abstract class Entity<T> : AbstractValidator<T>
     {
         public Guid Id { get; protected set; }
+        [Required]
+        public DateTimeOffset DateInc { get; protected set; }
+        [Required]
+        public DateTimeOffset DateAlter { get; protected set; }
+        [NotMapped]
         public ValidationResult ValidationResult { get; protected set; }
 
         protected Entity()
@@ -15,5 +21,8 @@ namespace Domain.Product.Entities
         }
 
         public abstract bool IsValid();
+
+        public void SetDateInc(DateTimeOffset dateInc) => DateInc = dateInc;
+        public void SetDateAlter(DateTimeOffset dateAlter) => DateAlter = dateAlter;
     }
 }

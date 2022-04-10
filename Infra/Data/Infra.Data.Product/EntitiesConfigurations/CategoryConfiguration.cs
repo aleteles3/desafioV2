@@ -27,6 +27,7 @@ namespace Infra.Data.Product.EntitiesConfigurations
                 .HasForeignKey(x => x.CategoryId);
 
             builder.Ignore(x => x.ValidationResult);
+            builder.Ignore(x => x.CascadeMode);
         }
     }
 }

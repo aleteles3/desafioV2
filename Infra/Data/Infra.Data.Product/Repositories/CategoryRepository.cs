@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Domain.Product.Entities;
 using Domain.Product.Interfaces;
 using Infra.Data.Product.Context;
@@ -35,14 +31,14 @@ namespace Infra.Data.Product.Repositories
 
         public async Task<Guid> AddCategoryAsync(Category category)
         {
-            await Context.AddAsync(category);
+            await AddAsync(category);
             await SaveChangesAsync();
             return category.Id;
         }
 
         public async Task UpdateCategoryAsync(Category category)
         {
-            Context.Update(category);
+            Update(category);
             await SaveChangesAsync();
         }
 
