@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="PredicateExtensions" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

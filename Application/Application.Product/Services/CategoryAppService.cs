@@ -14,14 +14,19 @@ public partial class CategoryAppService : AppServiceCore<ICategoryRepository>, I
     
     public async Task<CategoryViewModel> GetCategoryById(Guid id)
     {
-        var category = await Repository.GetCategoryByIdAsync(id);
+        var result = await Repository.GetCategoryByIdAsync(id);
 
-        return Mapper.Map<CategoryViewModel>(category);
+        return Mapper.Map<CategoryViewModel>(result);
     }
 
-    public Task<IEnumerable<CategoryViewModel>> GetCategories(CategoryFilterViewModel categoryFilterViewModel)
+    public async Task<IEnumerable<CategoryViewModel>> GetCategories(CategoryFilterViewModel categoryFilterViewModel,
+        int? start = null, int? length = null)
     {
-        throw new NotImplementedException();
+        var predicate = CreateCategoryQueryPredicate(categoryFilterViewModel);
+
+        var result = await Repository.GetCategoriesAsync(predicate, start, length);
+
+        return Mapper.Map<IEnumerable<CategoryViewModel>>(result);
     }
 
     public Task<Guid?> AddCategory(AddCategoryViewModel addCategoryViewModel)

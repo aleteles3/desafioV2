@@ -27,7 +27,9 @@ namespace Infra.Data.Product.Repositories
 
         public async Task<ProductDomain> GetProductByIdAsync(Guid id)
         {
-            return await Context.Set<ProductDomain>().FirstOrDefaultAsync(x => x.Id == id);
+            return await Context.Set<ProductDomain>()
+                .Include(x => x.Category)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Guid> AddProductAsync(ProductDomain product)

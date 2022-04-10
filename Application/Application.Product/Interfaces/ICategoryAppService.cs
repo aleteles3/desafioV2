@@ -7,7 +7,8 @@ namespace Application.Product.Interfaces;
 public interface ICategoryAppService
 {
     Task<CategoryViewModel> GetCategoryById(Guid id);
-    Task<IEnumerable<CategoryViewModel>> GetCategories(CategoryFilterViewModel categoryFilterViewModel);
+    Task<IEnumerable<CategoryViewModel>> GetCategories(CategoryFilterViewModel categoryFilterViewModel,
+        int? start = null, int? length = null);
     Task<Guid?> AddCategory(AddCategoryViewModel addCategoryViewModel);
     Task UpdateCategory(UpdateCategoryViewModel updateCategoryViewModel);
     Task RemoveCategory(Guid categoryId);
