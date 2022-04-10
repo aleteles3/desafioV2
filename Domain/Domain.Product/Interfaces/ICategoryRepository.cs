@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Domain.Product.Entities;
 
 namespace Domain.Product.Interfaces
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : ICoreRepository
     {
         Task<IEnumerable<Category>> GetCategoriesAsync(Expression<Func<Category, bool>> predicate, 
             int? start, int? length, params Expression<Func<Category, object>>[] includes);
