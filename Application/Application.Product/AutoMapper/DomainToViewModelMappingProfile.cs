@@ -5,9 +5,9 @@ using ProductDomain = Domain.Product.Entities.Product;
 
 namespace Application.Product.AutoMapper;
 
-public class DomainToDtoMappingProfile : Profile
+public class DomainToViewModelMappingProfile : Profile
 {
-    public DomainToDtoMappingProfile()
+    public DomainToViewModelMappingProfile()
     {
         CreateMap<Category, CategoryViewModel>();
         CreateMap<ProductDomain, ProductViewModel>();

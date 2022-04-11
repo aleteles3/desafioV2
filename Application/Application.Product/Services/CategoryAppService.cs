@@ -1,16 +1,19 @@
 using Application.Core.Services;
+using Application.Product.Cqrs.Category.Commands;
 using Application.Product.Interfaces;
 using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Application.Product.ViewModels.Grid;
 using AutoMapper;
 using Domain.Product.Interfaces;
+using MediatR;
 
 namespace Application.Product.Services;
 
 public partial class CategoryAppService : AppServiceCore<ICategoryRepository>, ICategoryAppService
 {
-    public CategoryAppService(IMapper mapper, ICategoryRepository repository) : base(mapper, repository) { }
+    public CategoryAppService(IMapper mapper, ICategoryRepository repository, IMediator mediator) 
+        : base(mapper, repository, mediator) { }
     
     public async Task<CategoryViewModel> GetCategoryById(Guid id)
     {
@@ -29,9 +32,11 @@ public partial class CategoryAppService : AppServiceCore<ICategoryRepository>, I
         return Mapper.Map<IEnumerable<CategoryViewModel>>(result);
     }
 
-    public Task<Guid?> AddCategory(AddCategoryViewModel addCategoryViewModel)
+    public async Task<Guid?> AddCategory(AddCategoryViewModel addCategoryViewModel)
     {
-        throw new NotImplementedException();
+        var command = Mapper.Map<CategoryAddCommand>(addCategoryViewModel);
+
+        return await Mediator.Send(command);
     }
 
     public Task UpdateCategory(UpdateCategoryViewModel updateCategoryViewModel)

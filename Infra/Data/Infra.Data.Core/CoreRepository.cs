@@ -1,9 +1,10 @@
 using Domain.Core.Entities;
+using Domain.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Core
 {
-    public abstract class CoreRepository
+    public abstract class CoreRepository : ICoreRepository
     {
         protected DbContext Context;
 
@@ -12,39 +13,39 @@ namespace Infra.Data.Core
             Context = context;
         }
         
-        public virtual async Task BeginTransactionAsync()
+        public async Task BeginTransactionAsync()
         {
             if (Context.Database.CurrentTransaction != null)
                 return;
             await Context.Database.BeginTransactionAsync();
         }
 
-        protected virtual async Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync()
         {
             return await Context.SaveChangesAsync();
         }
 
-        public virtual async Task CommitTransactionAsync()
+        public async Task CommitTransactionAsync()
         {
             await Context.Database.CommitTransactionAsync();
         }
 
-        public virtual async Task RollBackTransactionAsync()
+        public async Task RollBackTransactionAsync()
         {
             await Context.Database.RollbackTransactionAsync();
         }
 
         protected async Task AddAsync<T>(Entity<T> entity)
         {
-            entity.SetDateInc(DateTimeOffset.Now);
-            entity.SetDateAlter(DateTimeOffset.Now);
+            entity.SetDateInc(DateTimeOffset.UtcNow);
+            entity.SetDateAlter(DateTimeOffset.UtcNow);
 
             await Context.AddAsync(entity);
         }
 
         protected void Update<T>(Entity<T> entity)
         {
-            entity.SetDateAlter(DateTimeOffset.Now);
+            entity.SetDateAlter(DateTimeOffset.UtcNow);
             Context.Update(entity);
         }
     }

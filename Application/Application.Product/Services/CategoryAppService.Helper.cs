@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Linq.Expressions;
 using Application.Product.ViewModels.Filters;
 using Domain.Product.Entities;
@@ -16,7 +15,7 @@ public partial class CategoryAppService
         if (categoryFilterViewModel.Id != null)
             predicate = predicate.And(x => x.Id == categoryFilterViewModel.Id);
         if (!string.IsNullOrWhiteSpace(categoryFilterViewModel.Name))
-            predicate = predicate.And(x => x.Name.Contains(categoryFilterViewModel.Name, StringComparison.InvariantCultureIgnoreCase));
+            predicate = predicate.And(x => x.Name.ToUpper().Contains(categoryFilterViewModel.Name.ToUpper()));
         if (categoryFilterViewModel.DateIncStart != null)
             predicate = predicate.And(x => x.DateInc >= categoryFilterViewModel.DateIncStart.Value.Date);
         if (categoryFilterViewModel.DateIncEnd != null)

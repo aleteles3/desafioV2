@@ -1,9 +1,12 @@
 using Application.Product.AutoMapper;
+using Application.Product.Cqrs.Category.Handlers;
+using Application.Product.Cqrs.Product.Handlers;
 using Application.Product.Interfaces;
 using Application.Product.Services;
 using Domain.Product.Interfaces;
 using Infra.Data.Product.Context;
 using Infra.Data.Product.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +24,13 @@ namespace Infra.IoC.Product
             
             //Adding AutoMapper
             services.AddAutoMapper(typeof(AutoMapperConfiguration));
+            
+            //Adding Mediator
+            services.AddMediatR(new[]
+            {
+                typeof(ProductCommandHandler),
+                typeof(CategoryCommandHandler)
+            });
 
             //Adding Services
             services.AddScoped<IProductRepository, ProductRepository>();

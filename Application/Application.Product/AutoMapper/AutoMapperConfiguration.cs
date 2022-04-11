@@ -8,7 +8,7 @@ public class AutoMapperConfiguration
     {
         return new MapperConfiguration(x =>
         {
-            x.AddProfile(new DomainToDtoMappingProfile());
+            x.AddProfile(new DomainToViewModelMappingProfile());
         });
     }
 }

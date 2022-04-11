@@ -1,4 +1,5 @@
 using Application.Product.Interfaces;
+using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,5 +31,13 @@ public class ProductController : Controller
         var result = await _productAppService.GetProducts(productFilterViewModel, start, length);
 
         return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddProduct([FromBody] AddProductViewModel addProductViewModel)
+    {
+        var result = await _productAppService.AddProduct(addProductViewModel);
+
+        return result != null ? Ok(result) : BadRequest(result);
     }
 }

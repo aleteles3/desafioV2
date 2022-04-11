@@ -1,4 +1,5 @@
 using Application.Product.Interfaces;
+using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,5 +32,13 @@ public class CategoryController : Controller
             start, length);
 
         return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddCategory([FromBody] AddCategoryViewModel addCategoryViewModel)
+    {
+        var result = await _categoryAppService.AddCategory(addCategoryViewModel);
+
+        return result != null ? Ok(result) : BadRequest(result);
     }
 }

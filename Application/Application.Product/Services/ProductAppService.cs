@@ -1,16 +1,19 @@
 using Application.Core.Services;
+using Application.Product.Cqrs.Product.Commands;
 using Application.Product.Interfaces;
 using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Application.Product.ViewModels.Grid;
 using AutoMapper;
 using Domain.Product.Interfaces;
+using MediatR;
 
 namespace Application.Product.Services;
 
 public partial class ProductAppService : AppServiceCore<IProductRepository>, IProductAppService
 {
-    public ProductAppService(IMapper mapper, IProductRepository repository) : base(mapper, repository) { }
+    public ProductAppService(IMapper mapper, IProductRepository repository, IMediator mediator) 
+        : base(mapper, repository, mediator) { }
 
     public async Task<ProductViewModel> GetProductById(Guid id)
     {
@@ -29,9 +32,11 @@ public partial class ProductAppService : AppServiceCore<IProductRepository>, IPr
         return Mapper.Map<IEnumerable<ProductViewModel>>(result);
     }
 
-    public Task<Guid?> AddProduct(AddProductViewModel addProductViewModel)
+    public async Task<Guid?> AddProduct(AddProductViewModel addProductViewModel)
     {
-        throw new NotImplementedException();
+        var command = Mapper.Map<ProductAddCommand>(addProductViewModel);
+
+        return await Mediator.Send(command);
     }
 
     public Task UpdateProduct(UpdateProductViewModel updateProductViewModel)

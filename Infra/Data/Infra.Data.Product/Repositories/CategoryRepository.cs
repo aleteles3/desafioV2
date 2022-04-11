@@ -12,7 +12,7 @@ namespace Infra.Data.Product.Repositories
         public CategoryRepository(ProductContext productContext) : base(productContext) { }
         
         public async Task<IEnumerable<Category>> GetCategoriesAsync(Expression<Func<Category, bool>> predicate, 
-            int? start, int? length, params Expression<Func<Category, object>>[] includes)
+            int? start = null, int? length = null, params Expression<Func<Category, object>>[] includes)
         {
             var query = Context.Set<Category>().Where(predicate);
 
