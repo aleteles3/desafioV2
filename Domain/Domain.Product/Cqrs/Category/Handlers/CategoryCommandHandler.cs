@@ -1,9 +1,9 @@
-using Application.Product.Cqrs.Category.Commands;
+using Domain.Product.Cqrs.Category.Commands;
 using Domain.Product.Interfaces;
 using MediatR;
 using CategoryDomain = Domain.Product.Entities.Category;
 
-namespace Application.Product.Cqrs.Category.Handlers;
+namespace Domain.Product.Cqrs.Category.Handlers;
 
 public class CategoryCommandHandler :
     IRequestHandler<CategoryAddCommand, Guid?>,

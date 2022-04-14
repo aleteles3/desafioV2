@@ -1,10 +1,10 @@
 using Application.Core.Services;
-using Application.Product.Cqrs.Category.Commands;
 using Application.Product.Interfaces;
 using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Application.Product.ViewModels.Grid;
 using AutoMapper;
+using Domain.Product.Cqrs.Category.Commands;
 using Domain.Product.Interfaces;
 using MediatR;
 

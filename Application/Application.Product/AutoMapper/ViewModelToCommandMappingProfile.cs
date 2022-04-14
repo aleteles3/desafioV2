@@ -1,7 +1,7 @@
-using Application.Product.Cqrs.Category.Commands;
 using Application.Product.Cqrs.Product.Commands;
 using Application.Product.ViewModels.Crud;
 using AutoMapper;
+using Domain.Product.Cqrs.Category.Commands;
 
 namespace Application.Product.AutoMapper;
 

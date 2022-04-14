@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Product.Cqrs.Category.Commands;
+namespace Domain.Product.Cqrs.Category.Commands;
 
 public class CategoryUpdateCommand : IRequest
 {
