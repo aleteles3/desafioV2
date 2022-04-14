@@ -41,4 +41,23 @@ public class CategoryController : Controller
 
         return result != null ? Ok(result) : BadRequest(result);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryViewModel updateCategoryViewModel)
+    {
+        await _categoryAppService.UpdateCategory(updateCategoryViewModel);
+
+        //ToDo Create Core Controller Method
+        return Ok();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> RemoveCategory([FromQuery] Guid? id)
+    {
+        if (id == null)
+            return BadRequest();
+        
+        await _categoryAppService.RemoveCategory(id.Value);
+        return Ok();
+    }
 }

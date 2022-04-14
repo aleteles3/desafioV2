@@ -9,6 +9,7 @@ public class AutoMapperConfiguration
         return new MapperConfiguration(x =>
         {
             x.AddProfile(new DomainToViewModelMappingProfile());
+            x.AddProfile(new ViewModelToCommandMappingProfile());
         });
     }
 }

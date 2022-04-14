@@ -39,13 +39,17 @@ public partial class CategoryAppService : AppServiceCore<ICategoryRepository>, I
         return await Mediator.Send(command);
     }
 
-    public Task UpdateCategory(UpdateCategoryViewModel updateCategoryViewModel)
+    public async Task UpdateCategory(UpdateCategoryViewModel updateCategoryViewModel)
     {
-        throw new NotImplementedException();
+        var command = Mapper.Map<CategoryUpdateCommand>(updateCategoryViewModel);
+
+        await Mediator.Send(command);
     }
 
-    public Task RemoveCategory(Guid categoryId)
+    public async Task RemoveCategory(Guid categoryId)
     {
-        throw new NotImplementedException();
+        var command = new CategoryRemoveCommand(categoryId);
+
+        await Mediator.Send(command);
     }
 }

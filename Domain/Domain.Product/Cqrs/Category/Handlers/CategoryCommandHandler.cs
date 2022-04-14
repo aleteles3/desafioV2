@@ -1,3 +1,4 @@
+using Domain.Core.Commands;
 using Domain.Product.Cqrs.Category.Commands;
 using Domain.Product.Interfaces;
 using MediatR;
@@ -5,7 +6,7 @@ using CategoryDomain = Domain.Product.Entities.Category;
 
 namespace Domain.Product.Cqrs.Category.Handlers;
 
-public class CategoryCommandHandler :
+public class CategoryCommandHandler : CommandHandler,
     IRequestHandler<CategoryAddCommand, Guid?>,
     IRequestHandler<CategoryUpdateCommand>,
     IRequestHandler<CategoryRemoveCommand>
@@ -24,9 +25,7 @@ public class CategoryCommandHandler :
         if (!category.IsValid())
         {
             //ToDo Create memory Bus to store the errors
-            foreach (var error in category.ValidationResult.Errors)
-                Console.WriteLine(error);
-
+            NotifyValidationErrors(category.ValidationResult);
             return null;
         }
 
@@ -35,8 +34,7 @@ public class CategoryCommandHandler :
 
         if (categories.Any())
         {
-            Console.WriteLine("Category with the same name already exists.");
-
+            NotifyValidationErrors("Category with the same name already exists.");
             return null;
         }
 
@@ -51,20 +49,67 @@ public class CategoryCommandHandler :
         catch (Exception e)
         {
             Console.WriteLine(e);
-
             await _categoryRepository.RollBackTransactionAsync();
-
             return null;
         }
     }
 
-    public Task<Unit> Handle(CategoryUpdateCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(CategoryUpdateCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var category = await _categoryRepository.GetCategoryByIdAsync(request.Id);
+
+        if (category == null)
+        {
+            NotifyValidationErrors("Category does not exist.");
+            return Unit.Value;
+        }
+        
+        category.SetName(request.Name);
+
+        if (!category.IsValid())
+        {
+            NotifyValidationErrors(category.ValidationResult);
+            return Unit.Value;
+        }
+
+        try
+        {
+            await _categoryRepository.BeginTransactionAsync();
+            await _categoryRepository.UpdateCategoryAsync(category);
+            await _categoryRepository.CommitTransactionAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            await _categoryRepository.RollBackTransactionAsync();
+        }
+        
+        return Unit.Value;
     }
 
-    public Task<Unit> Handle(CategoryRemoveCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(CategoryRemoveCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var category = await _categoryRepository.GetCategoryByIdAsync(request.Id);
+
+        if (category == null)
+        {
+            Console.WriteLine("Category does not exist.");
+            return Unit.Value;
+        }
+
+        try
+        {
+            await _categoryRepository.BeginTransactionAsync();
+            await _categoryRepository.RemoveCategoryAsync(category);
+            await _categoryRepository.CommitTransactionAsync();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            await _categoryRepository.RollBackTransactionAsync();
+        }
+
+        return Unit.Value;
     }
 }

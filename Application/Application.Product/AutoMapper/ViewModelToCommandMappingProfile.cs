@@ -11,5 +11,6 @@ public class ViewModelToCommandMappingProfile : Profile
     {
         CreateMap<AddCategoryViewModel, CategoryAddCommand>();
         CreateMap<AddProductViewModel, ProductAddCommand>();
+        CreateMap<UpdateCategoryViewModel, CategoryUpdateCommand>();
     }
 }
