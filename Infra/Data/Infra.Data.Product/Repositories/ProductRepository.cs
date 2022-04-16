@@ -34,14 +34,14 @@ namespace Infra.Data.Product.Repositories
 
         public async Task<Guid> AddProductAsync(ProductDomain product)
         {
-            await Context.AddAsync(product);
+            await AddAsync(product);
             await SaveChangesAsync();
             return product.Id;
         }
 
         public async Task UpdateProductAsync(ProductDomain product)
         {
-            Context.Update(product);
+            Update(product);
             await SaveChangesAsync();
         }
 

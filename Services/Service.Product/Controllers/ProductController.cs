@@ -1,16 +1,18 @@
 using Application.Product.Interfaces;
 using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
+using Domain.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Service.Core;
 
 namespace Service.Product.Controllers;
 
 [Route("api/Product")]
-public class ProductController : Controller
+public class ProductController : CoreController
 {
     private readonly IProductAppService _productAppService;
     
-    public ProductController(IProductAppService productAppService)
+    public ProductController(IProductAppService productAppService, IMemoryBus memoryBus) : base(memoryBus)
     {
         _productAppService = productAppService;
     }
@@ -21,7 +23,7 @@ public class ProductController : Controller
     {
         var result = await _productAppService.GetProductById(id);
 
-        return Ok(result);
+        return Response(result);
     }
 
     [HttpGet]
@@ -30,7 +32,7 @@ public class ProductController : Controller
     {
         var result = await _productAppService.GetProducts(productFilterViewModel, start, length);
 
-        return Ok(result);
+        return Response(result);
     }
 
     [HttpPost]
@@ -38,6 +40,22 @@ public class ProductController : Controller
     {
         var result = await _productAppService.AddProduct(addProductViewModel);
 
-        return result != null ? Ok(result) : BadRequest(result);
+        return Response(result);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductViewModel updateProductViewModel)
+    {
+        await _productAppService.UpdateProduct(updateProductViewModel);
+
+        return Response();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> RemoveProduct([FromQuery] Guid id)
+    {
+        await _productAppService.RemoveProduct(id);
+
+        return Response();
     }
 }

@@ -61,7 +61,7 @@ public class CategoryCommandHandler : CommandHandler,
 
         if (category == null)
         {
-            NotifyValidationErrors("Category does not exist.");
+            NotifyValidationErrors($"Category does not exist. Id: {request.Id}");
             return Unit.Value;
         }
         
@@ -95,7 +95,7 @@ public class CategoryCommandHandler : CommandHandler,
 
         if (category == null)
         {
-            NotifyValidationErrors("Category does not exist.");
+            NotifyValidationErrors($"Category does not exist. Id: {request.Id}");
             return Unit.Value;
         }
 

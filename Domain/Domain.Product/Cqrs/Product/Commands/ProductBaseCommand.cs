@@ -1,10 +1,10 @@
-namespace Application.Product.Cqrs.Product.Commands;
+namespace Domain.Product.Cqrs.Product.Commands;
 
 public class ProductBaseCommand
 {
     public string Name { get; set; }
     public string Description { get; set; }
-    public decimal Price { get; set; }
-    public int Stock { get; set; }
-    public Guid CategoryId { get; set; }
+    public decimal? Price { get; set; }
+    public int? Stock { get; set; }
+    public Guid? CategoryId { get; set; }
 }

@@ -23,4 +23,9 @@ public class CommandHandler
     {
         _memoryBus.RaiseValidationError(ErrorCode.DomainValidationError, error);
     }
+
+    protected bool HasValidationErrors()
+    {
+        return _memoryBus.GetValidationErrors()?.Any() == true;
+    }
 }

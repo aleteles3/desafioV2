@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Product.Cqrs.Product.Commands;
+namespace Domain.Product.Cqrs.Product.Commands;
 
 public class ProductUpdateCommand : ProductBaseCommand, IRequest
 {

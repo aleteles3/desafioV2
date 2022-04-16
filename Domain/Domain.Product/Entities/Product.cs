@@ -12,7 +12,7 @@ namespace Domain.Product.Entities
         public int Stock { get; private set; }
 
         //Navigation Properties
-        public Guid CategoryId { get; set; }
+        public Guid CategoryId { get; private set; }
         public Category Category { get; set; }
         
         //Constructors
@@ -36,6 +36,7 @@ namespace Domain.Product.Entities
         public void SetDescription(string description) => Description = description;
         public void SetPrice(decimal price) => Price = price;
         public void SetStock(int stock) => Stock = stock;
+        public void SetCategoryId(Guid categoryId) => CategoryId = categoryId;
         
         //Validations
         public override bool IsValid()
