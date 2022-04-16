@@ -1,4 +1,5 @@
 using Domain.Core.Commands;
+using Domain.Core.Interfaces;
 using Domain.Product.Cqrs.Category.Commands;
 using Domain.Product.Interfaces;
 using MediatR;
@@ -13,7 +14,7 @@ public class CategoryCommandHandler : CommandHandler,
 {
     private readonly ICategoryRepository _categoryRepository;
 
-    public CategoryCommandHandler(ICategoryRepository categoryRepository)
+    public CategoryCommandHandler(ICategoryRepository categoryRepository, IMemoryBus memoryBus) : base(memoryBus)
     {
         _categoryRepository = categoryRepository;
     }
@@ -24,7 +25,6 @@ public class CategoryCommandHandler : CommandHandler,
 
         if (!category.IsValid())
         {
-            //ToDo Create memory Bus to store the errors
             NotifyValidationErrors(category.ValidationResult);
             return null;
         }
@@ -49,6 +49,7 @@ public class CategoryCommandHandler : CommandHandler,
         catch (Exception e)
         {
             Console.WriteLine(e);
+            NotifyValidationErrors("A fatal error occurred. The operation could not be completed.");
             await _categoryRepository.RollBackTransactionAsync();
             return null;
         }
@@ -81,6 +82,7 @@ public class CategoryCommandHandler : CommandHandler,
         catch (Exception e)
         {
             Console.WriteLine(e);
+            NotifyValidationErrors("A fatal error occurred. The operation could not be completed.");
             await _categoryRepository.RollBackTransactionAsync();
         }
         
@@ -93,7 +95,7 @@ public class CategoryCommandHandler : CommandHandler,
 
         if (category == null)
         {
-            Console.WriteLine("Category does not exist.");
+            NotifyValidationErrors("Category does not exist.");
             return Unit.Value;
         }
 
@@ -107,6 +109,7 @@ public class CategoryCommandHandler : CommandHandler,
         catch (Exception e)
         {
             Console.WriteLine(e);
+            NotifyValidationErrors("A fatal error occurred. The operation could not be completed.");
             await _categoryRepository.RollBackTransactionAsync();
         }
 

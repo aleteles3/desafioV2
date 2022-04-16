@@ -3,7 +3,7 @@ using Domain.Product.Interfaces;
 using MediatR;
 using ProductDomain = Domain.Product.Entities.Product;
 
-namespace Application.Product.Cqrs.Product.Handlers;
+namespace Domain.Product.Cqrs.Product.Handlers;
 
 public class ProductCommandHandler : 
     IRequestHandler<ProductAddCommand, Guid?>, 

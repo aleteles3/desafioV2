@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -13,6 +12,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Application.Product\Application.Product.csproj" />
     <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Product\Infra.IoC.Product.csproj" />
+    <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Core\Infra.IoC.Core.csproj" />
+    <ProjectReference Include="..\Service.Core\Service.Core.csproj" />
   </ItemGroup>
 
 </Project>

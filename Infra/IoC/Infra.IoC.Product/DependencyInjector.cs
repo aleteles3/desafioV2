@@ -1,8 +1,8 @@
 using Application.Product.AutoMapper;
-using Application.Product.Cqrs.Product.Handlers;
 using Application.Product.Interfaces;
 using Application.Product.Services;
 using Domain.Product.Cqrs.Category.Handlers;
+using Domain.Product.Cqrs.Product.Handlers;
 using Domain.Product.Interfaces;
 using Infra.Data.Product.Context;
 using Infra.Data.Product.Repositories;

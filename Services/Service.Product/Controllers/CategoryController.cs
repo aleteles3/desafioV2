@@ -1,16 +1,19 @@
 using Application.Product.Interfaces;
 using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
+using Domain.Core.Enums;
+using Domain.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Service.Core;
 
 namespace Service.Product.Controllers;
 
 [Route("api/Product/Category")]
-public class CategoryController : Controller
+public class CategoryController : CoreController
 {
     private readonly ICategoryAppService _categoryAppService;
 
-    public CategoryController(ICategoryAppService categoryAppService)
+    public CategoryController(ICategoryAppService categoryAppService, IMemoryBus memoryBus) : base(memoryBus)
     {
         _categoryAppService = categoryAppService;
     }
@@ -21,7 +24,7 @@ public class CategoryController : Controller
     {
         var result = await _categoryAppService.GetCategoryById(id);
 
-        return Ok(result);
+        return Response(result);
     }
 
     [HttpGet]
@@ -31,7 +34,7 @@ public class CategoryController : Controller
         var result = await _categoryAppService.GetCategories(categoryFilterViewModel,
             start, length);
 
-        return Ok(result);
+        return Response(result);
     }
 
     [HttpPost]
@@ -39,25 +42,29 @@ public class CategoryController : Controller
     {
         var result = await _categoryAppService.AddCategory(addCategoryViewModel);
 
-        return result != null ? Ok(result) : BadRequest(result);
+        return Response(result);
     }
 
     [HttpPut]
     public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryViewModel updateCategoryViewModel)
     {
         await _categoryAppService.UpdateCategory(updateCategoryViewModel);
-
-        //ToDo Create Core Controller Method
-        return Ok();
+        
+        return Response();
     }
 
     [HttpDelete]
     public async Task<IActionResult> RemoveCategory([FromQuery] Guid? id)
     {
         if (id == null)
-            return BadRequest();
-        
+        {
+            _memoryBus.RaiseValidationError(ErrorCode.ServiceValidationError, "Category Id must be informed.");
+            
+            return Response();
+        }
+
         await _categoryAppService.RemoveCategory(id.Value);
-        return Ok();
+        
+        return Response();
     }
 }
