@@ -22,6 +22,14 @@ public class UserCommandHandler : CommandHandler,
 
     public async Task<Guid?> Handle(UserAddCommand request, CancellationToken cancellationToken)
     {
+        var existingUser = await _userRepository.GetUsers(x => x.Login.ToUpper() == request.Login.ToUpper());
+
+        if (existingUser.Any())
+        {
+            NotifyValidationErrors("User with the same login already exists.");
+            return null;
+        }
+        
         var user = new UserDomain(request.Login, request.Password);
 
         if (!user.IsValid())
