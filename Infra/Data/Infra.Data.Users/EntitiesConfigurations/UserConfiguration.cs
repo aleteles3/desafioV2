@@ -21,6 +21,10 @@ public class UserConfiguration : IEntityTypeConfiguration<UserDomain>
             .HasColumnName("Use_Password")
             .IsRequired();
 
+        builder.Property(x => x.Status)
+            .HasColumnName("Use_Status")
+            .IsRequired();
+
         builder.Ignore(x => x.ValidationResult);
         builder.Ignore(x => x.CascadeMode);
     }
