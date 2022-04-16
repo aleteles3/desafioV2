@@ -32,11 +32,10 @@ namespace Infra.Data.Product.Repositories
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Guid> AddProductAsync(ProductDomain product)
+        public async Task AddProductAsync(ProductDomain product)
         {
             await AddAsync(product);
             await SaveChangesAsync();
-            return product.Id;
         }
 
         public async Task UpdateProductAsync(ProductDomain product)

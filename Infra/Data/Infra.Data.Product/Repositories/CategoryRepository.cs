@@ -30,11 +30,10 @@ namespace Infra.Data.Product.Repositories
             return await Context.Set<Category>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Guid> AddCategoryAsync(Category category)
+        public async Task AddCategoryAsync(Category category)
         {
             await AddAsync(category);
             await SaveChangesAsync();
-            return category.Id;
         }
 
         public async Task UpdateCategoryAsync(Category category)

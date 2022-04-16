@@ -1,5 +1,6 @@
 using Domain.Core.Interfaces;
 using Domain.Core.MemoryBus;
+using Domain.Core.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,7 @@ public class DependencyInjector
     {
         //Adding Core Injections
         services.AddScoped<IMemoryBus, MemoryBus>();
+        services.AddScoped<ISecurity, Security>();
 
         return services;
     }

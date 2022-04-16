@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Infra.IoC.Usuario</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Application\Application.Users\Application.Users.csproj" />
+      <ProjectReference Include="..\..\Data\Infra.Data.Users\Infra.Data.Users.csproj" />
+      <ProjectReference Include="..\Infra.IoC.Core\Infra.IoC.Core.csproj" />
+    </ItemGroup>
+
+</Project>

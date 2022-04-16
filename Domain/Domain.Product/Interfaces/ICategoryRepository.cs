@@ -9,7 +9,7 @@ namespace Domain.Product.Interfaces
         Task<IEnumerable<Category>> GetCategoriesAsync(Expression<Func<Category, bool>> predicate, 
             int? start = null, int? length = null, params Expression<Func<Category, object>>[] includes);
         Task<Category> GetCategoryByIdAsync(Guid id);
-        Task<Guid> AddCategoryAsync(Category category);
+        Task AddCategoryAsync(Category category);
         Task UpdateCategoryAsync(Category category);
         Task RemoveCategoryAsync(Category category);
     }
