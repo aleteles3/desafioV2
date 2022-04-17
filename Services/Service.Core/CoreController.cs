@@ -51,10 +51,8 @@ public class CoreController : Controller
             var listType = typeof(List<>).MakeGenericType(elementType);
             instance = Activator.CreateInstance(listType);
         }
-        else if (type.GetConstructor(Type.EmptyTypes) != null || type.IsValueType)
-            instance = default(T);
         else
-            instance = null;
+            instance = default(T);
 
         return instance;
     }
