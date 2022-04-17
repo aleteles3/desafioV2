@@ -54,7 +54,7 @@ public class ProductCommandHandler : CommandHandler,
         {
             Console.WriteLine(e);
             NotifyValidationErrors("A fatal error occurred. The operation could not be completed.");
-            await _categoryRepository.RollBackTransactionAsync();
+            await _productRepository.RollBackTransactionAsync();
             return null;
         }
     }
@@ -90,7 +90,7 @@ public class ProductCommandHandler : CommandHandler,
         {
             Console.WriteLine(e);
             NotifyValidationErrors("A fatal error occurred. The operation could not be completed.");
-            await _categoryRepository.RollBackTransactionAsync();
+            await _productRepository.RollBackTransactionAsync();
         }
         
         return Unit.Value;
@@ -116,7 +116,7 @@ public class ProductCommandHandler : CommandHandler,
         {
             Console.WriteLine(e);
             NotifyValidationErrors("A fatal error occurred. The operation could not be completed.");
-            await _categoryRepository.RollBackTransactionAsync();
+            await _productRepository.RollBackTransactionAsync();
         }
         
         return Unit.Value;
@@ -130,7 +130,7 @@ public class ProductCommandHandler : CommandHandler,
 
             if (category == null)
             {
-                NotifyValidationErrors($"Category does not exist. Id: {request.Id}");
+                NotifyValidationErrors($"Category does not exist. Id: {request.CategoryId}");
                 return;
             }
             

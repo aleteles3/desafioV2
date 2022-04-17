@@ -15,12 +15,13 @@ namespace Domain.Product.Test.CommandHandlerTest.Category;
 public class CategoryCommandHandlerCollection : ICollectionFixture<CategoryCommandHandlerFixture>{ }
 public class CategoryCommandHandlerFixture
 {
-    public CategoryCommandHandler CategoryCommandHandler { get; set; }
+    private CategoryCommandHandler CategoryCommandHandler { get; set; }
     public AutoMocker Mocker { get; set; }
 
     public CategoryCommandHandler GetCategoryCommandHandler()
     {
         Mocker = new AutoMocker();
+        
         CategoryCommandHandler = Mocker.CreateInstance<CategoryCommandHandler>();
 
         return CategoryCommandHandler;

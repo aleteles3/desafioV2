@@ -7,6 +7,11 @@ public class MemoryBus : IMemoryBus
 {
     private IList<ValidationError> ValidationErrors { get; set; }
 
+    public bool HasValidationErrors()
+    {
+        return GetValidationErrors().Any();
+    }
+
     public IList<ValidationError> GetValidationErrors()
     {
         ValidationErrors ??= new List<ValidationError>();

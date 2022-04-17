@@ -39,7 +39,7 @@ namespace Domain.Product.Test.EntitiesTest
             Assert.Contains("Product name must be informed.", errorMessages);
             Assert.Contains("Product name must be, at least, 3 characters long.", errorMessages);
             Assert.Contains("Product description must be informed.", errorMessages);
-            Assert.Contains("Product price must be greater than 0", errorMessages);
+            Assert.Contains("Product price must be greater than 0.", errorMessages);
             Assert.Contains("Product stock cannot be less than 0.", errorMessages);
             Assert.Contains("Category Id must be informed.", errorMessages);
         }

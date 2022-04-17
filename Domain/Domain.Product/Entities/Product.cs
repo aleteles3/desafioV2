@@ -52,7 +52,7 @@ namespace Domain.Product.Entities
                 .WithMessage("Product description must be informed.");
             RuleFor(x => x.Price)
                 .GreaterThan(0)
-                .WithMessage("Product price must be greater than 0");
+                .WithMessage("Product price must be greater than 0.");
             RuleFor(x => x.Stock)
                 .GreaterThanOrEqualTo(0)
                 .WithMessage("Product stock cannot be less than 0.");

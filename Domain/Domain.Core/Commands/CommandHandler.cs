@@ -26,6 +26,6 @@ public class CommandHandler
 
     protected bool HasValidationErrors()
     {
-        return _memoryBus.GetValidationErrors()?.Any() == true;
+        return _memoryBus.HasValidationErrors();
     }
 }
