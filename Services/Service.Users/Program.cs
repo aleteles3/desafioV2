@@ -11,8 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var value = app.Configuration.GetSection("IsDevelopment").Value;
+if (value != null && bool.Parse(value))
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -25,4 +25,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+var url = app.Configuration.GetSection("ServicesUrls").GetSection("Users").Value;
+app.Run(url);
