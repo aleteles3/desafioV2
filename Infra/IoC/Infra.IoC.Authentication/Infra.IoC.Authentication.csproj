@@ -6,20 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\6.0.3\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-      </Reference>
-      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\6.0.3\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Domain\Domain.Core\Domain.Core.csproj" />
+      <ProjectReference Include="..\Infra.IoC.Core\Infra.IoC.Core.csproj" />
     </ItemGroup>
 
 </Project>

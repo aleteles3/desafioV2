@@ -4,10 +4,10 @@ var builder = WebApplication.CreateBuilder(args);
 Infra.IoC.Core.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 Infra.IoC.Usuario.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 Infra.IoC.Authentication.DependencyInjector.AddServices(builder.Services, builder.Configuration);
+Infra.IoC.Swagger.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -25,4 +25,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run("http://localhost:62001");
+app.Run();

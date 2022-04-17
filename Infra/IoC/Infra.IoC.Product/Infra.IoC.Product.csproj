@@ -9,6 +9,7 @@
     <ProjectReference Include="..\..\..\Application\Application.Product\Application.Product.csproj" />
     <ProjectReference Include="..\..\Data\Infra.Data.Product\Infra.Data.Product.csproj" />
     <ProjectReference Include="..\Infra.IoC.Core\Infra.IoC.Core.csproj" />
+    <ProjectReference Include="..\Infra.IoC.Swagger\Infra.IoC.Swagger.csproj" />
   </ItemGroup>
 
 </Project>
