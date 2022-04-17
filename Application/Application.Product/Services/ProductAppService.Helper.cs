@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using Application.Product.ViewModels.Filters;
-using PredicateExtensions;
+using Domain.Core.Utility;
 using ProductDomain = Domain.Product.Entities.Product;
 
 namespace Application.Product.Services;
@@ -10,7 +10,7 @@ public partial class ProductAppService
     private Expression<Func<ProductDomain, bool>> CreateProductQueryPredicate(
         ProductFilterViewModel productFilterViewModel)
     {
-        var predicate = PredicateExtensions.PredicateExtensions.Begin<ProductDomain>(true);
+        var predicate = PredicateExtensions.Begin<ProductDomain>(true);
 
         if (productFilterViewModel.Id != null)
             predicate = predicate.And(x => x.Id == productFilterViewModel.Id);

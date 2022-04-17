@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.4.0" />
-    <PackageReference Include="PredicateExtensions" Version="1.0.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 

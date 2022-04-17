@@ -19,7 +19,7 @@ public class ResponseModel<T>
         ValidationErrors = validationErrors;
     }
     
-    private int GetDataCount<T>(T data)
+    private int GetDataCount<TR>(TR data)
     {
         if (data is ICollection collection)
             return collection.Count;

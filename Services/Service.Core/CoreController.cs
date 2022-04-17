@@ -39,9 +39,9 @@ public class CoreController : Controller
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    private dynamic? GetInstanceToReturn<T>()
+    private dynamic GetInstanceToReturn<T>()
     {
-        dynamic? instance;
+        dynamic instance;
         var type = typeof(T);
         if (type.IsArray)
             instance = Array.CreateInstance(type.GetElementType() ?? typeof(object), 0);

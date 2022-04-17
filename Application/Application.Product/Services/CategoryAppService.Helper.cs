@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using Application.Product.ViewModels.Filters;
+using Domain.Core.Utility;
 using Domain.Product.Entities;
-using PredicateExtensions;
 
 namespace Application.Product.Services;
 
@@ -10,7 +10,7 @@ public partial class CategoryAppService
     private Expression<Func<Category, bool>> CreateCategoryQueryPredicate(
         CategoryFilterViewModel categoryFilterViewModel)
     {
-        var predicate = PredicateExtensions.PredicateExtensions.Begin<Category>(true);
+        var predicate = PredicateExtensions.Begin<Category>(true);
 
         if (categoryFilterViewModel.Id != null)
             predicate = predicate.And(x => x.Id == categoryFilterViewModel.Id);
