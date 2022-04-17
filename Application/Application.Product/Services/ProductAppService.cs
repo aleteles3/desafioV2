@@ -4,6 +4,7 @@ using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Application.Product.ViewModels.Grid;
 using AutoMapper;
+using Domain.Core.Interfaces;
 using Domain.Product.Cqrs.Product.Commands;
 using Domain.Product.Interfaces;
 using MediatR;
@@ -12,8 +13,8 @@ namespace Application.Product.Services;
 
 public partial class ProductAppService : AppServiceCore<IProductRepository>, IProductAppService
 {
-    public ProductAppService(IMapper mapper, IProductRepository repository, IMediator mediator) 
-        : base(mapper, repository, mediator) { }
+    public ProductAppService(IMapper mapper, IProductRepository repository, IMediator mediator, IMemoryBus memoryBus) 
+        : base(mapper, repository, mediator, memoryBus) { }
 
     public async Task<ProductViewModel> GetProductById(Guid id)
     {

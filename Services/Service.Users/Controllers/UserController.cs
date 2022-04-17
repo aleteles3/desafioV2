@@ -7,7 +7,7 @@ using Service.Core;
 namespace Service.User.Controllers;
 
 [Route("api/User")]
-public class UserController : CoreController
+public partial class UserController : CoreController
 {
     private readonly IUserAppService _userAppService;
     public UserController(IUserAppService userAppService, IMemoryBus memoryBus) : base(memoryBus)

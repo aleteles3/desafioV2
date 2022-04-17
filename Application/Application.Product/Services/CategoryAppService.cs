@@ -4,6 +4,7 @@ using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Application.Product.ViewModels.Grid;
 using AutoMapper;
+using Domain.Core.Interfaces;
 using Domain.Product.Cqrs.Category.Commands;
 using Domain.Product.Interfaces;
 using MediatR;
@@ -12,8 +13,8 @@ namespace Application.Product.Services;
 
 public partial class CategoryAppService : AppServiceCore<ICategoryRepository>, ICategoryAppService
 {
-    public CategoryAppService(IMapper mapper, ICategoryRepository repository, IMediator mediator) 
-        : base(mapper, repository, mediator) { }
+    public CategoryAppService(IMapper mapper, ICategoryRepository repository, IMediator mediator, IMemoryBus memoryBus) 
+        : base(mapper, repository, mediator, memoryBus) { }
     
     public async Task<CategoryViewModel> GetCategoryById(Guid id)
     {

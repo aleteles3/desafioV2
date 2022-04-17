@@ -1,6 +1,5 @@
 using Application.User.AutoMapper;
 using Application.User.Interfaces;
-using Application.User.Services;
 using Domain.User.Cqrs.User.Handlers;
 using Domain.User.Interfaces;
 using Infra.Data.Users.Context;
@@ -9,6 +8,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using UserAppService = Application.Users.Services.UserAppService;
 
 namespace Infra.IoC.Usuario;
 
