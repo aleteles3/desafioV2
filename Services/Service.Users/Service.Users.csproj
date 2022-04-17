@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Authentication\Infra.IoC.Authentication.csproj" />
     <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Core\Infra.IoC.Core.csproj" />
     <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Users\Infra.IoC.Users.csproj" />
     <ProjectReference Include="..\Service.Core\Service.Core.csproj" />

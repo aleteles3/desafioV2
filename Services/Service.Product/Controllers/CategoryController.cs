@@ -3,11 +3,13 @@ using Application.Product.ViewModels.Crud;
 using Application.Product.ViewModels.Filters;
 using Domain.Core.Enums;
 using Domain.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Core;
 
 namespace Service.Product.Controllers;
 
+[Authorize]
 [Route("api/Product/Category")]
 public class CategoryController : CoreController
 {
