@@ -1,8 +1,7 @@
-using Application.User.ViewModels.Auth;
-using Application.User.ViewModels.Crud;
 using Application.Users.ViewModels.Auth;
+using Application.Users.ViewModels.Crud;
 
-namespace Application.User.Interfaces;
+namespace Application.Users.Interfaces;
 
 public interface IUserAppService
 {

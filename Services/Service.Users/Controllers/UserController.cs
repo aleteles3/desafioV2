@@ -1,5 +1,5 @@
-using Application.User.Interfaces;
-using Application.User.ViewModels.Crud;
+using Application.Users.Interfaces;
+using Application.Users.ViewModels.Crud;
 using Domain.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Service.Core;

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.User.ViewModels.Crud;
+namespace Application.Users.ViewModels.Crud;
 
 public class AddUserViewModel
 {

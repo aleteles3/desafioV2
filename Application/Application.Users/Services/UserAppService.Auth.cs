@@ -1,7 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Application.User.ViewModels.Auth;
 using Application.Users.ViewModels.Auth;
 using Domain.Core.Enums;
 using Microsoft.IdentityModel.Tokens;

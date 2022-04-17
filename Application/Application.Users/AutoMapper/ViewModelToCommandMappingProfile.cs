@@ -1,4 +1,4 @@
-using Application.User.ViewModels.Crud;
+using Application.Users.ViewModels.Crud;
 using AutoMapper;
 using Domain.User.Cqrs.User.Commands;
 

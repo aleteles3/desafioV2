@@ -1,6 +1,6 @@
 using Application.Core.Services;
-using Application.User.Interfaces;
-using Application.User.ViewModels.Crud;
+using Application.Users.Interfaces;
+using Application.Users.ViewModels.Crud;
 using AutoMapper;
 using Domain.Core.Interfaces;
 using Domain.User.Cqrs.User.Commands;

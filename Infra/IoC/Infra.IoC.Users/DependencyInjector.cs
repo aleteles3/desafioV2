@@ -1,5 +1,5 @@
 using Application.User.AutoMapper;
-using Application.User.Interfaces;
+using Application.Users.Interfaces;
 using Domain.User.Cqrs.User.Handlers;
 using Domain.User.Interfaces;
 using Infra.Data.Users.Context;

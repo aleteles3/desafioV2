@@ -1,4 +1,4 @@
-using Application.User.ViewModels.Auth;
+using Application.Users.ViewModels.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Service.User.Controllers;

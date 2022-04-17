@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.User.ViewModels.Auth;
+namespace Application.Users.ViewModels.Auth;
 
 public class UserAuthViewModel
 {
