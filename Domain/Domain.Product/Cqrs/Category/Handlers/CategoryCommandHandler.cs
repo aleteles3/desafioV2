@@ -57,11 +57,20 @@ public class CategoryCommandHandler : CommandHandler,
 
     public async Task<Unit> Handle(CategoryUpdateCommand request, CancellationToken cancellationToken)
     {
-        var category = await _categoryRepository.GetCategoryByIdAsync(request.Id);
-
+        var categories = (await _categoryRepository
+            .GetCategoriesAsync(x => x.Id == request.Id || x.Name.ToUpper() == request.Name.ToUpper())).ToList();
+        
+        var category = categories.FirstOrDefault(x => x.Id == request.Id);
         if (category == null)
         {
             NotifyValidationErrors($"Category does not exist. Id: {request.Id}");
+            return Unit.Value;
+        }
+        
+        var categoriesWithTheSameName = categories.Where(x => x.Name.ToUpper() == request.Name.ToUpper());
+        if (categoriesWithTheSameName.Any())
+        {
+            NotifyValidationErrors($"Category with the same name already exists. Name: {request.Name}");
             return Unit.Value;
         }
         
