@@ -20,6 +20,6 @@ public partial class UserController : CoreController
     {
         var result = await _userAppService.AddUser(addUserViewModel);
 
-        return Response(result);
+        return Response(result, StatusCodes.Status201Created);
     }
 }

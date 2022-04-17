@@ -44,7 +44,7 @@ public class CategoryController : CoreController
     {
         var result = await _categoryAppService.AddCategory(addCategoryViewModel);
 
-        return Response(result);
+        return Response(result, StatusCodes.Status201Created);
     }
 
     [HttpPut]
@@ -52,7 +52,7 @@ public class CategoryController : CoreController
     {
         await _categoryAppService.UpdateCategory(updateCategoryViewModel);
         
-        return Response();
+        return Response(successStatusCode: StatusCodes.Status204NoContent);
     }
 
     [HttpDelete]
@@ -67,6 +67,6 @@ public class CategoryController : CoreController
 
         await _categoryAppService.RemoveCategory(id.Value);
         
-        return Response();
+        return Response(successStatusCode: StatusCodes.Status204NoContent);
     }
 }

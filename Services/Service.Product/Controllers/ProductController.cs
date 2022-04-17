@@ -42,7 +42,7 @@ public class ProductController : CoreController
     {
         var result = await _productAppService.AddProduct(addProductViewModel);
 
-        return Response(result);
+        return Response(result, StatusCodes.Status201Created);
     }
 
     [HttpPut]
@@ -50,7 +50,7 @@ public class ProductController : CoreController
     {
         await _productAppService.UpdateProduct(updateProductViewModel);
 
-        return Response();
+        return Response(successStatusCode: StatusCodes.Status204NoContent);
     }
 
     [HttpDelete]
@@ -58,6 +58,6 @@ public class ProductController : CoreController
     {
         await _productAppService.RemoveProduct(id);
 
-        return Response();
+        return Response(successStatusCode: StatusCodes.Status204NoContent);
     }
 }
