@@ -17,6 +17,9 @@ public class UserConfiguration : IEntityTypeConfiguration<UserDomain>
             .HasColumnName("Use_Login")
             .IsRequired();
 
+        builder.HasIndex(x => x.Login)
+            .HasDatabaseName("IX_Use_Login");
+
         builder.Property(x => x.Password)
             .HasColumnName("Use_Password")
             .IsRequired();
