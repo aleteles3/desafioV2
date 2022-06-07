@@ -14,7 +14,7 @@ public partial class UserAppService
     {
         var hashPassword = _security.EncryptString(userAuthViewModel.Password, userAuthViewModel.Login);
         var user = (await Repository.GetUsers(x => x.Login == userAuthViewModel.Login && x.Password == hashPassword))
-            .FirstOrDefault();
+            ?.FirstOrDefault();
 
         if (user == null)
         {
