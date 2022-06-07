@@ -13,6 +13,10 @@ public class UserConfiguration : IEntityTypeConfiguration<UserDomain>
         builder.HasKey(x => x.Id)
             .HasName("PK_Use_User");
 
+        builder.Property(x => x.Id)
+            .HasColumnName("Use_UserId")
+            .IsRequired();
+
         builder.Property(x => x.Login)
             .HasColumnName("Use_Login")
             .IsRequired();
