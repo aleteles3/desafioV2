@@ -9,7 +9,7 @@ public class AddProductViewModel
     public string Name { get; set; }
     [Required(AllowEmptyStrings = false, ErrorMessage = "Product Name must be informed.")]
     public string Description { get; set; }
-    [Required(ErrorMessage = "Product Price must be informed.")]
+    [Required(ErrorMessage = "Product ListPrice must be informed.")]
     [Range(0, double.MaxValue)]
     public decimal? Price { get; set; }
     [Required(ErrorMessage = "Product Stock must be informed.")]

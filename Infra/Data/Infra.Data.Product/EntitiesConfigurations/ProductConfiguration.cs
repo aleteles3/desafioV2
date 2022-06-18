@@ -27,8 +27,8 @@ namespace Infra.Data.Product.EntitiesConfigurations
                 .HasMaxLength(200)
                 .IsRequired();
 
-            builder.Property(x => x.Price)
-                .HasColumnName("Pro_Price")
+            builder.Property(x => x.ListPrice)
+                .HasColumnName("Pro_ListPrice")
                 .HasPrecision(10, 2)
                 .IsRequired();
 
@@ -44,6 +44,10 @@ namespace Infra.Data.Product.EntitiesConfigurations
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.CategoryId)
                 .HasConstraintName("FK_Pro_Product_Cat_Category_Cat_CategoryId");
+
+            builder.HasMany(x => x.OrderItems)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId);
             
             builder.Ignore(x => x.ValidationResult);
             builder.Ignore(x => x.CascadeMode);

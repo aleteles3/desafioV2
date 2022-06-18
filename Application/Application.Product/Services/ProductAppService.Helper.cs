@@ -17,9 +17,9 @@ public partial class ProductAppService
         if (!string.IsNullOrWhiteSpace(productFilterViewModel.Name))
             predicate = predicate.And(x => x.Name.ToUpper().Contains(productFilterViewModel.Name.ToUpper()));
         if (productFilterViewModel.PriceStart != null)
-            predicate = predicate.And(x => x.Price >= productFilterViewModel.PriceStart);
+            predicate = predicate.And(x => x.ListPrice >= productFilterViewModel.PriceStart);
         if (productFilterViewModel.PriceEnd != null)
-            predicate = predicate.And(x => x.Price <= productFilterViewModel.PriceEnd);
+            predicate = predicate.And(x => x.ListPrice <= productFilterViewModel.PriceEnd);
         if (productFilterViewModel.CategoryId != null)
             predicate = predicate.And(x => x.CategoryId == productFilterViewModel.CategoryId);
         if (productFilterViewModel.DateIncStart != null)

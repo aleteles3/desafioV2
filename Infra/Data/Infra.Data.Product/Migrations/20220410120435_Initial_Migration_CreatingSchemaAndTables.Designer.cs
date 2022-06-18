@@ -78,7 +78,7 @@ namespace Infra.Data.Product.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("Pro_Name");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("ListPrice")
                         .HasPrecision(10, 2)
                         .HasColumnType("numeric(10,2)")
                         .HasColumnName("Pro_Price");

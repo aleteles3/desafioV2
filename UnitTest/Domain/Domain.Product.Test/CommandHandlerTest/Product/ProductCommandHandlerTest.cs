@@ -54,7 +54,7 @@ public class ProductCommandHandlerTest
             .Verify(r => r.AddProductAsync(It.Is<ProductDomain>(x =>
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Once);
         _fixture.Mocker
@@ -94,7 +94,7 @@ public class ProductCommandHandlerTest
         _fixture.Mocker
             .GetMock<IMemoryBus>()
             .Verify(r => r.RaiseValidationError(It.Is<ErrorCode>(x => x == ErrorCode.DomainValidationError),
-                It.Is<string>(x => x == "Product price must be greater than 0.")), Times.Once);
+                It.Is<string>(x => x == "Product listPrice must be greater than 0.")), Times.Once);
         _fixture.Mocker
             .GetMock<IMemoryBus>()
             .Verify(r => r.RaiseValidationError(It.Is<ErrorCode>(x => x == ErrorCode.DomainValidationError),
@@ -116,7 +116,7 @@ public class ProductCommandHandlerTest
             .Verify(r => r.AddProductAsync(It.Is<ProductDomain>(x =>
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Never);
         _fixture.Mocker
@@ -160,7 +160,7 @@ public class ProductCommandHandlerTest
             .Verify(r => r.AddProductAsync(It.Is<ProductDomain>(x =>
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Never);
         _fixture.Mocker
@@ -198,7 +198,7 @@ public class ProductCommandHandlerTest
             .Verify(r => r.AddProductAsync(It.Is<ProductDomain>(x =>
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Once);
         _fixture.Mocker
@@ -255,7 +255,7 @@ public class ProductCommandHandlerTest
                 x.Id == command.Id &&
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Once);
         _fixture.Mocker
@@ -300,7 +300,7 @@ public class ProductCommandHandlerTest
                 x.Id == command.Id &&
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Never);
         _fixture.Mocker
@@ -353,7 +353,7 @@ public class ProductCommandHandlerTest
                 x.Id == command.Id &&
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Never);
         _fixture.Mocker
@@ -400,7 +400,7 @@ public class ProductCommandHandlerTest
         _fixture.Mocker
             .GetMock<IMemoryBus>()
             .Verify(r => r.RaiseValidationError(It.Is<ErrorCode>(x => x == ErrorCode.DomainValidationError),
-                It.Is<string>(x => x == "Product price must be greater than 0.")), Times.Once);
+                It.Is<string>(x => x == "Product listPrice must be greater than 0.")), Times.Once);
 
         _fixture.Mocker
             .GetMock<IProductRepository>()
@@ -411,7 +411,7 @@ public class ProductCommandHandlerTest
                 x.Id == command.Id &&
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Never);
         _fixture.Mocker
@@ -460,7 +460,7 @@ public class ProductCommandHandlerTest
                 x.Id == command.Id &&
                 x.Name == command.Name &&
                 x.Description == command.Description &&
-                x.Price == command.Price &&
+                x.ListPrice == command.Price &&
                 x.Stock == command.Stock &&
                 x.CategoryId == command.CategoryId)), Times.Once);
         _fixture.Mocker
