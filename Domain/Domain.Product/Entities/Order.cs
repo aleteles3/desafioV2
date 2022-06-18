@@ -37,6 +37,14 @@ public sealed class Order : Entity<Order>
             .NotEmpty()
             .WithMessage("User Id must be informed.");
 
+        RuleForEach(x => x.OrderItems)
+            .Custom((x, context) =>
+            {
+                if (!x.IsValid())
+                    foreach (var validationResultError in x.ValidationResult.Errors)
+                        context.AddFailure(validationResultError);
+            });
+
         ValidationResult = Validate(this);
 
         return ValidationResult.IsValid;

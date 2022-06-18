@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UserAppService = Application.Users.Services.UserAppService;
 
-namespace Infra.IoC.Usuario;
+namespace Infra.IoC.Users;
 
 public static class DependencyInjector
 {

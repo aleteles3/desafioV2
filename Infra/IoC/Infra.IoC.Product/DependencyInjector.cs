@@ -2,6 +2,7 @@ using Application.Product.AutoMapper;
 using Application.Product.Interfaces;
 using Application.Product.Services;
 using Domain.Product.Cqrs.Category.Handlers;
+using Domain.Product.Cqrs.Order.Handlers;
 using Domain.Product.Cqrs.Product.Handlers;
 using Domain.Product.Interfaces;
 using Infra.Data.Product.Context;
@@ -29,7 +30,8 @@ namespace Infra.IoC.Product
             services.AddMediatR(new[]
             {
                 typeof(ProductCommandHandler),
-                typeof(CategoryCommandHandler)
+                typeof(CategoryCommandHandler),
+                typeof(OrderCommandHandler)
             });
 
             //Adding Services
@@ -37,6 +39,7 @@ namespace Infra.IoC.Product
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductAppService, ProductAppService>();
             services.AddScoped<ICategoryAppService, CategoryAppService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             return services;
         }

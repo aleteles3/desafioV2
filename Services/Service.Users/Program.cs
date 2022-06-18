@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 Infra.IoC.Core.DependencyInjector.AddServices(builder.Services, builder.Configuration);
-Infra.IoC.Usuario.DependencyInjector.AddServices(builder.Services, builder.Configuration);
+Infra.IoC.Users.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 Infra.IoC.Authentication.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 Infra.IoC.Swagger.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 builder.Services.AddControllers();
