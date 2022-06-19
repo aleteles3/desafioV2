@@ -8,6 +8,7 @@ public sealed class OrderItem : Entity<OrderItem>
     //Properties
     public decimal ListPrice { get; }
     public decimal Discount { get; }
+    public int Quantity { get; set; }
     
     //Navigation Properties
     public Guid OrderId { get; }
@@ -16,16 +17,17 @@ public sealed class OrderItem : Entity<OrderItem>
     public Product Product { get; set; }
     
     //Constructors
-    public OrderItem(Guid orderId, Guid productId, decimal listPrice, decimal discount)
+    public OrderItem(Guid orderId, Guid productId, decimal listPrice, decimal discount, int quantity)
     {
         OrderId = orderId;
         ProductId = productId;
         ListPrice = listPrice;
         Discount = discount;
+        Quantity = quantity;
     }
 
-    public OrderItem(Guid id, Guid orderId, Guid productId, decimal listPrice, decimal discount)
-        : this(orderId, productId, listPrice, discount)
+    public OrderItem(Guid id, Guid orderId, Guid productId, decimal listPrice, decimal discount, int quantity)
+        : this(orderId, productId, listPrice, discount, quantity)
     {
         Id = id;
     }

@@ -10,4 +10,5 @@ public class AddOrderItemViewModel
     public Guid ProductId { get; set; }
     public decimal ListPrice { get; set; }
     public decimal Discount { get; set; }
+    public int Quantity { get; set; }
 }

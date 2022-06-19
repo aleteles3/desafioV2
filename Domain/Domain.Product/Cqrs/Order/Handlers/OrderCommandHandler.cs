@@ -15,7 +15,7 @@ public class OrderCommandHandler : CommandHandler,
     private readonly IProductRepository _productRepository;
     private readonly IMapper _mapper;
     
-    protected OrderCommandHandler(IOrderRepository orderRepository,
+    public OrderCommandHandler(IOrderRepository orderRepository,
         IProductRepository productRepository, IMapper mapper, IMemoryBus memoryBus) : base(memoryBus)
     {
         _orderRepository = orderRepository;

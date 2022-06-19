@@ -42,6 +42,10 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
         builder.Property(x => x.Discount)
             .HasColumnName("Ori_Discount")
             .IsRequired();
+
+        builder.Property(x => x.Quantity)
+            .HasColumnName("Ori_Quantity")
+            .IsRequired();
         
         builder.Ignore(x => x.ValidationResult);
         builder.Ignore(x => x.CascadeMode);
