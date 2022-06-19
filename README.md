@@ -7,3 +7,4 @@ Structure-wise, it consists of an Onion Architecture, with Core projects to act 
 CQRS (Command Query Responsiblity Segregation) was achieved using MediatR. 
 The test database was Postgres, using CodeFirst migrations.
 Unit Tests were done with XUnit. Authorization was made using JWT Bearer Token.
+A small business flow was implemented using RabbitMQ as mensaging queueing broker. The user places an order, and the order is enqueued, to be accepted/declined later, in an asynchronous manner.
