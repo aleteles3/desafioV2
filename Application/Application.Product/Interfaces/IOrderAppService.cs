@@ -5,4 +5,5 @@ namespace Application.Product.Interfaces;
 public interface IOrderAppService
 {
     Task AddOrder(AddOrderViewModel addOrderViewModel);
+    Task AcceptOrder(Guid orderId);
 }

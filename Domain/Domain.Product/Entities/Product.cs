@@ -36,7 +36,7 @@ namespace Domain.Product.Entities
         public void SetName(string name) => Name = name;
         public void SetDescription(string description) => Description = description;
         public void SetPrice(decimal price) => ListPrice = price;
-        public void SetStock(int stock) => Stock = stock;
+        public void AddStock(int stock) => Stock += stock;
         public void SetCategoryId(Guid categoryId) => CategoryId = categoryId;
         
         //Validations

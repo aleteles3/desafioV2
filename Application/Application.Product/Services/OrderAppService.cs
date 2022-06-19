@@ -31,4 +31,11 @@ public class OrderAppService : AppServiceCore<IOrderRepository>, IOrderAppServic
         
         //ToDo Send Menssage to Process Order
     }
+
+    public async Task AcceptOrder(Guid orderId)
+    {
+        var command = new OrderAcceptCommand(orderId);
+
+        await Mediator.Send(command);
+    }
 }
