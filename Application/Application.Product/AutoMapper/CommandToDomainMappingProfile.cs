@@ -13,7 +13,7 @@ public class CommandToDomainMappingProfile : Profile
             {
                 var order = new Order(Guid.NewGuid(), src.UserId);
                 var orderItems = src.OrderItemAddCommands.Select(x => new OrderItem(Guid.NewGuid(),
-                    order.Id, x.ProductId, x.ListPrice, x.Discount, x.Quantity));
+                    order.Id, x.ProductId, x.ListPrice, x.Discount, x.Quantity)).ToList();
                 order.OrderItems = orderItems;
 
                 return order;

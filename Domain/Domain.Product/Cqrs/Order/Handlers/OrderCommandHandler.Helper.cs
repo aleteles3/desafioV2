@@ -40,7 +40,7 @@ public partial class OrderCommandHandler
     {
         foreach (var orderItem in order.OrderItems)
         {
-            var product = products.First(x => x.Id == orderItem.Id);
+            var product = products.First(x => x.Id == orderItem.ProductId);
             product.AddStock(-orderItem.Quantity);
             
             await _productRepository.UpdateProductAsync(product);

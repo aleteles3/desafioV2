@@ -12,7 +12,9 @@ public class OrderRepository : CoreRepository, IOrderRepository
 
     public async Task<Order> GetOrderByIdAsync(Guid id)
     {
-        return await Context.Set<Order>().FirstOrDefaultAsync(x => x.Id == id);
+        return await Context.Set<Order>()
+            .Include(x => x.OrderItems)
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task AddOrderAsync(Order order)

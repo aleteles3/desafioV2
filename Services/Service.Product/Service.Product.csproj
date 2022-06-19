@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Authentication\Infra.IoC.Authentication.csproj" />
+    <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.MassTransit\Infra.IoC.MassTransit.csproj" />
     <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Product\Infra.IoC.Product.csproj" />
     <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Core\Infra.IoC.Core.csproj" />
     <ProjectReference Include="..\..\Infra\IoC\Infra.IoC.Swagger\Infra.IoC.Swagger.csproj" />

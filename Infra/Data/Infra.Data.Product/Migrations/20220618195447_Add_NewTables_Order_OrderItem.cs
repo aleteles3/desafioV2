@@ -47,8 +47,8 @@ namespace Infra.Data.Product.Migrations
                         name: "FK_Ord_Order_Use_User_Use_UserId",
                         column: x => x.Use_UserId,
                         principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Use_UserId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,14 +73,14 @@ namespace Infra.Data.Product.Migrations
                         principalSchema: "Product",
                         principalTable: "Ord_Order",
                         principalColumn: "Ord_OrderId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Ori_OrderItem_Pro_Product_Pro_ProductId",
                         column: x => x.Pro_ProductId,
                         principalSchema: "Product",
                         principalTable: "Pro_Product",
                         principalColumn: "Pro_ProductId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

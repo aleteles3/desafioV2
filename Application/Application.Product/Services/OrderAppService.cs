@@ -3,6 +3,9 @@ using Application.Product.Interfaces;
 using Application.Product.ViewModels.Crud;
 using AutoMapper;
 using Domain.Core.Interfaces;
+using Domain.MassTransit;
+using Domain.MassTransit.Interfaces;
+using Domain.MassTransit.Queues;
 using Domain.Product.Cqrs.Order.Commands;
 using Domain.Product.Interfaces;
 using MediatR;
@@ -12,12 +15,14 @@ namespace Application.Product.Services;
 public class OrderAppService : AppServiceCore<IOrderRepository>, IOrderAppService
 {
     private readonly IUserToken _userToken;
+    private readonly IMassTransit _massTransit;
 
-    protected OrderAppService(IMapper mapper, IOrderRepository repository, IMediator mediator, IMemoryBus memoryBus,
-        IUserToken userToken)
+    public OrderAppService(IMapper mapper, IOrderRepository repository, IMediator mediator, IMemoryBus memoryBus,
+        IUserToken userToken, IMassTransit massTransit)
         : base(mapper, repository, mediator, memoryBus)
     {
         _userToken = userToken;
+        _massTransit = massTransit;
     }
 
     public async Task AddOrder(AddOrderViewModel addOrderViewModel)
@@ -27,9 +32,9 @@ public class OrderAppService : AppServiceCore<IOrderRepository>, IOrderAppServic
             opt.Items["UserId"] = _userToken.GetUserId();
         });
 
-        await Mediator.Send(command);
-        
-        //ToDo Send Menssage to Process Order
+        var result = await Mediator.Send(command);
+
+        await _massTransit.PublishMessage(MessageQueueProduct.AcceptOrder.Name, new MessageModel(result.ToString()));
     }
 
     public async Task AcceptOrder(Guid orderId)

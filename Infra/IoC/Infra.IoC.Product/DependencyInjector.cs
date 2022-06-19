@@ -39,6 +39,7 @@ namespace Infra.IoC.Product
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductAppService, ProductAppService>();
             services.AddScoped<ICategoryAppService, CategoryAppService>();
+            services.AddScoped<IOrderAppService, OrderAppService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 
             return services;

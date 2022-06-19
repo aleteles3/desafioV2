@@ -22,5 +22,6 @@ public class MemoryBus : IMemoryBus
     {
         ValidationErrors ??= new List<ValidationError>();
         ValidationErrors.Add(new ValidationError(errorCode, message));
+        Console.WriteLine(message);
     }
 }
