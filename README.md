@@ -1,5 +1,5 @@
 # desafioV2
-C#, .Net 6.0, EntityFrameWorkCore 6.0, CodeFirst, Postgres, CQRS
+C#, .Net 6.0, EntityFrameWorkCore 6.0, CodeFirst, Postgres, CQRS, RabbitMQ/MassTransit
 
 This repository is an updated version of an Internship challenge (https://github.com/aleteles3/desafio_alexandre), done solely for study purposes.
 
