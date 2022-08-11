@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Domain\Domain.NoSql\Domain.NoSql.csproj" />
       <ProjectReference Include="..\..\Domain\Domain.Users\Domain.Users.csproj" />
       <ProjectReference Include="..\Application.Core\Application.Core.csproj" />
     </ItemGroup>

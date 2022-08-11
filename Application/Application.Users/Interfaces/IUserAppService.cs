@@ -7,4 +7,5 @@ public interface IUserAppService
 {
     Task<Guid?> AddUser(AddUserViewModel addUserViewModel);
     Task<TokenViewModel> GenerateUserAuthToken(UserAuthViewModel userAuthViewModel);
+    Task<TokenViewModel> RefreshToken(RefreshTokenViewModel refreshTokenViewModel);
 }

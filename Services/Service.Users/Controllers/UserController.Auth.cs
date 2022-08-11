@@ -7,9 +7,18 @@ public partial class UserController
 {
     [HttpPost]
     [Route("AuthToken")]
-    public async Task<IActionResult> GenerateUserAuthToken(UserAuthViewModel userAuthViewModel)
+    public async Task<IActionResult> GenerateUserAuthToken([FromBody] UserAuthViewModel userAuthViewModel)
     {
         var result = await _userAppService.GenerateUserAuthToken(userAuthViewModel);
+
+        return Response(result);
+    }
+
+    [HttpPost]
+    [Route("RefreshToken")]
+    public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenViewModel refreshTokenViewModel)
+    {
+        var result = await _userAppService.RefreshToken(refreshTokenViewModel);
 
         return Response(result);
     }

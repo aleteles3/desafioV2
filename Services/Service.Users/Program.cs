@@ -5,6 +5,7 @@ Infra.IoC.Core.DependencyInjector.AddServices(builder.Services, builder.Configur
 Infra.IoC.Users.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 Infra.IoC.Authentication.DependencyInjector.AddServices(builder.Services, builder.Configuration);
 Infra.IoC.Swagger.DependencyInjector.AddServices(builder.Services, builder.Configuration);
+Infra.IoC.NoSql.DependencyInjectorUserToken.AddServices(builder.Services, builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
